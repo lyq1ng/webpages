@@ -4,7 +4,7 @@ var map = new ol.Map({
     layers: [
         new ol.layer.Tile({
             source: new ol.source.XYZ({
-                url: 'http://t4.tianditu.com/DataServer?T=vec_w&tk=b9031f80391e6b65bd1dd80dcde1b097&x={x}&y={y}&l={z}'
+                url: 'http://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=b9031f80391e6b65bd1dd80dcde1b097'
             })
         }),
         new ol.layer.Tile({
