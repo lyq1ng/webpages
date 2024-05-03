@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Migration Chart</title>
+    <!-- 引入 ECharts 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <!-- 引入世界地图数据 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+</head>
+<body style="margin: 0;">
+    <!-- 定义一个具有一定宽高的容器，用于渲染 ECharts 图表 -->
+    <div id="migrationChart" style="width: 100vw; height: 100vh;"></div>
+
+    <script>
+        // 初始化 ECharts 实例
+        var myChart = echarts.init(document.getElementById('migrationChart'));
+
+        // 配置项
+        var option = {
+            // 设置标题
+            title: {
+                text: 'Global Migration Chart'
+            },
+            // 设置提示框
+            tooltip: {
+                trigger: 'item'
+            },
+            // 设置地图
+            geo: {
+                map: 'world',
+                // 关闭地图区域的鼠标缩放和平移
+                roam: false,
+                // 地图样式
+                itemStyle: {
+                    areaColor: '#122d40', // 背景颜色
+                    borderColor: '#4d6e86' // 边界颜色
+                },
+                // 更改地图线条样式
+                emphasis: {
+                    label: {
+                        show: false
+                    },
+                    itemStyle: {
+                        areaColor: '#122d40', // 背景颜色
+                        borderColor: '#4d6e86' // 边界颜色
+                    }
+                }
+            },
+            // 设置系列数据
+            series: [
+                {
+                    type: 'lines',
+                    // 设置数据
+                    data: [
+                        {
+                            // 设置起点和终点的坐标
+                            fromName: 'New York',
+                            toName: 'London',
+                            coords: [[-74.0059, 40.7128], [-0.1276, 51.5074]],
+                        },
+                        // 可以添加更多的迁徙数据...
+                    ],
+                    // 设置标注
+                    symbol: ['none', 'none'],
+                    symbolSize: 10,
+                    label: {
+                        show: false
+                    },
+                    // 设置线条样式
+                    lineStyle: {
+                        color: '#00ffff', // 线条颜色
+                        width: 2,
+                        curveness: 0.2, // 线条曲度，值为0到1
+                        type: 'solid',
+                    },
+                    // 设置动画效果为流动效果
+                    effect: {
+                        show: true,
+                        period: 4, //箭头指向速度，值越小速度越快
+                        trailLength: 0.3, //特效尾迹长度[0,1]值越大，尾迹越长重
+                        symbol: 'pin', //箭头图标
+                        symbolSize: 8, //图标大小
+                        color: '#2a6fd9'
+                    },
+                }
+            ]
+        };
+
+        // 使用配置项设置图表
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
